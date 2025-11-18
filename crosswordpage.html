@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Crossword Pangram</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google font: Saira Stencil One -->
+  <link href="https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap" rel="stylesheet">
+
+  <!-- Shared stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page">
+    <!-- same navigation as first page -->
+    <nav class="top-nav">
+      <a class="nav-button" href="crosswordpage.html">Choose</a>
+      <a class="nav-button" href="newspage.html">Some</a>
+      <a class="nav-button" href="watermarkpage.html">Language</a>
+    </nav>
+
+    <!-- grey divider above crossword -->
+    <div class="divider"></div>
+
+    <!-- crossword content -->
+    <main class="crossword-wrapper">
+      <div class="crossword">
+        <!-- main horizontal phrase -->
+        <div class="cw-row cw-row-main">
+          <!-- THE QUICK BROWN JUMPED -->
+          <span class="cw-cell">T</span>
+          <span class="cw-cell">H</span>
+          <span class="cw-cell">E</span>
+
+          <span class="cw-cell cw-empty"></span> <!-- space -->
+
+          <span class="cw-cell">Q</span>
+          <span class="cw-cell">U</span>
+          <span class="cw-cell">I</span>
+          <span class="cw-cell">C</span>
+          <span class="cw-cell">K</span>
+
+          <span class="cw-cell cw-empty"></span> <!-- space -->
+
+          <span class="cw-cell">B</span>
+          <span class="cw-cell">R</span>
+          <span class="cw-cell">O</span>
+          <span class="cw-cell">W</span>
+          <span class="cw-cell">N</span>
+
+          <span class="cw-cell cw-empty"></span> <!-- space -->
+
+          <span class="cw-cell">J</span>
+          <span class="cw-cell">U</span>
+          <span class="cw-cell">M</span>
+          <span class="cw-cell">P</span>
+          <span class="cw-cell">E</span>
+          <span class="cw-cell">D</span>
+        </div>
+
+        <!-- left vertical: THE LAZY -->
+        <div class="cw-column cw-column-left">
+          <span class="cw-cell">T</span>
+          <span class="cw-cell">H</span>
+          <span class="cw-cell">E</span>
+          <span class="cw-cell">L</span>
+          <span class="cw-cell">A</span>
+          <span class="cw-cell">Z</span>
+          <span class="cw-cell">Y</span>
+        </div>
+
+        <!-- center vertical: FOX -->
+        <div class="cw-column cw-column-center">
+          <span class="cw-cell">F</span>
+          <span class="cw-cell">O</span>
+          <span class="cw-cell">X</span>
+        </div>
+
+        <!-- right vertical: DOG / OVER (stacked) -->
+        <div class="cw-column cw-column-right">
+          <span class="cw-cell">D</span>
+          <span class="cw-cell">O</span>
+          <span class="cw-cell">G</span>
+          <span class="cw-cell">O</span>
+          <span class="cw-cell">V</span>
+          <span class="cw-cell">E</span>
+          <span class="cw-cell">R</span>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
+
+<!--
+    Script for unique double-click behavior of one of the navigation buttons, which leads to a mysterious fourth page of the site.
+  -->
+
+<script>
+    (function () {
+      const langButton = document.querySelector('.nav-language');
+      if (!langButton) return;
+
+      const singleClickTarget = langButton.getAttribute('href') || 'watermarkpage.html';
+      const doubleClickTarget = 'about.html';
+
+      let clickTimer = null;
+      const delay = 250;
+
+      langButton.addEventListener('click', function (event) {
+        event.preventDefault();
+
+        if (clickTimer) {
+          // second click, treat as double-click
+          clearTimeout(clickTimer);
+          clickTimer = null;
+          window.location.href = doubleClickTarget;
+        } else {
+          // first click, wait to see if a second arrives
+          clickTimer = setTimeout(function () {
+            window.location.href = singleClickTarget;
+            clickTimer = null;
+          }, delay);
+        }
+      });
+    })();
+  </script>

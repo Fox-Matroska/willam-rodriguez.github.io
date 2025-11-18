@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Generic Times: Generic News</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google font: Saira Stencil One -->
+  <link href="https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap" rel="stylesheet">
+
+  <!-- External stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page">
+    <!-- navigation buttons -->
+    <nav class="top-nav">
+      <a class="nav-button" href="crosswordpage.html">Choose</a>
+      <a class="nav-button" href="newspage.html">Some</a>
+      <a class="nav-button" href="watermarkpage.html">Language</a>
+    </nav>
+
+    <!-- masthead -->
+    <header class="masthead">
+      <div class="masthead-date">Day, Month 00, 0000</div>
+      <div class="masthead-title">Generic Times: Generic News</div>
+      <div class="masthead-today">Today&rsquo;s Paper</div>
+    </header>
+
+    <!-- light grey divider -->
+    <div class="divider"></div>
+
+    <!-- three ads -->
+    <section class="ads-row">
+      <article class="ad-card">
+        <div class="ad-icon">G</div>
+        <div>
+          <div class="ad-text-title">Some Random Advertisement</div>
+          <div class="ad-text-body">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula posuere mattis.
+          </div>
+        </div>
+      </article>
+
+      <article class="ad-card">
+        <div class="ad-icon">G</div>
+        <div>
+          <div class="ad-text-title">Some Random Advertisement</div>
+          <div class="ad-text-body">
+            Curabitur cursus purus a quam varius venenatis. Aliquam erat volutpat.
+          </div>
+        </div>
+      </article>
+
+      <article class="ad-card">
+        <div class="ad-icon">G</div>
+        <div>
+          <div class="ad-text-title">Some Random Advertisement</div>
+          <div class="ad-text-body">
+            Sed purus metus, mattis vel efficitur sit amet, laoreet sit amet mauris.
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- black divider -->
+    <div class="divider dark"></div>
+
+    <!-- main content + sidebar -->
+    <section class="primary-layout">
+      <!-- left/main column -->
+      <div class="primary-main">
+        <div class="lead-section">
+          <!-- big image + caption -->
+          <div class="lead-image-block">
+            <div class="lead-image"></div>
+            <div class="lead-caption">
+              Country&rsquo;s third generation nuclear power plant comes online, prime minister
+              states that energy goals will be reached one year sooner than anticipated...
+            </div>
+          </div>
+
+          <!-- lead text -->
+          <article class="lead-story">
+            <h1 class="lead-headline">
+              Some country plans economic concessions by some year, skeptics are sketchy and skeptical
+            </h1>
+
+            <ul class="lead-body">
+              <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula posuere mattis.</li>
+              <li>Curabitur cursus purus a quam varius venenatis. Aliquam erat volutpat. Sed purus metus.</li>
+              <li>Suspendisse ornare tincidunt lorem, eu tempus ligula. Donec at odio ut sem ornare ultricies.</li>
+              <li>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.</li>
+              <li>Fusce vel magna sodales, tincidunt metus quis, facilisis nisi. Praesent accumsan lacus hendrerit.</li>
+            </ul>
+          </article>
+        </div>
+
+        <!-- divider -->
+        <div class="divider dark bottom-divider"></div>
+
+        <!-- bottom two highlight stories -->
+        <section class="bottom-stories">
+          <article class="bottom-story left">
+            <h2>Company&rsquo;s new deal with General Generic to construct Great Generic Skyscraper</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula posuere mattis.
+              Curabitur cursus purus a quam varius venenatis.
+            </p>
+            <p>
+              Donec at odio ut sem ornare ultricies eget in velit. Suspendisse ut commodo metus.
+            </p>
+          </article>
+
+          <article class="bottom-story right">
+            <h2>Filing shows Prime Minister Generic paid Mister Generic, who paid Generic</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula posuere mattis.
+            </p>
+            <p>
+              Suspendisse ornare tincidunt lorem, eu tempus ligula. Cras gravida urna magna.
+            </p>
+          </article>
+        </section>
+      </div>
+
+      <!-- right sidebar -->
+      <aside class="primary-sidebar">
+        <div class="sidebar-card">
+          <div class="card-title">Did You Know?</div>
+          <div class="sidebar-icon">G</div>
+          <div class="card-body">
+            The more sophisticated a typeface is, the more poorer its legibility becomes.
+            Though, there are exceptions...
+          </div>
+        </div>
+
+        <article class="sidebar-article">
+          <h2 class="sidebar-article-title">Mister Generic</h2>
+          <p class="sidebar-article-body">
+            Praesent bibendum felis erat, in finibus neque lacinia pretium. Etiam ac accumsan orci.
+          </p>
+        </article>
+      </aside>
+    </section>
+  </div>
+</body>
+</html>
+
+<!--
+    Script for unique double-click behavior of one of the navigation buttons, which leads to a mysterious fourth page of the site.
+  -->
+
+<script>
+    (function () {
+      const langButton = document.querySelector('.nav-language');
+      if (!langButton) return;
+
+      const singleClickTarget = langButton.getAttribute('href') || 'watermarkpage.html';
+      const doubleClickTarget = 'about.html';
+
+      let clickTimer = null;
+      const delay = 250;
+
+      langButton.addEventListener('click', function (event) {
+        event.preventDefault();
+
+        if (clickTimer) {
+          // second click, treat as double-click
+          clearTimeout(clickTimer);
+          clickTimer = null;
+          window.location.href = doubleClickTarget;
+        } else {
+          // first click, wait to see if a second arrives
+          clickTimer = setTimeout(function () {
+            window.location.href = singleClickTarget;
+            clickTimer = null;
+          }, delay);
+        }
+      });
+    })();
+  </script>

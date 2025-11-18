@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Watermarked Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Saira Stencil One -->
+  <link href="https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap" rel="stylesheet">
+
+  <!-- Shared styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page watermark-page">
+    <!-- white rectangle behind nav to hide watermark -->
+    <div class="nav-banner">
+      <nav class="top-nav">
+        <a class="nav-button" href="crosswordpage.html">Choose</a>
+        <a class="nav-button" href="newspage.html">Some</a>
+        <a class="nav-button" href="watermarkpage.html">Language</a>
+      </nav>
+    </div>
+  </div>
+</body>
+</html>
+
+<!--
+    Script for unique double-click behavior of one of the navigation buttons, which leads to a mysterious fourth page of the site.
+  -->
+
+<script>
+    (function () {
+      const langButton = document.querySelector('.nav-language');
+      if (!langButton) return;
+
+      const singleClickTarget = langButton.getAttribute('href') || 'watermarkpage.html';
+      const doubleClickTarget = 'about.html';
+
+      let clickTimer = null;
+      const delay = 250;
+
+      langButton.addEventListener('click', function (event) {
+        event.preventDefault();
+
+        if (clickTimer) {
+          // second click, treat as double-click
+          clearTimeout(clickTimer);
+          clickTimer = null;
+          window.location.href = doubleClickTarget;
+        } else {
+          // first click, wait to see if a second arrives
+          clickTimer = setTimeout(function () {
+            window.location.href = singleClickTarget;
+            clickTimer = null;
+          }, delay);
+        }
+      });
+    })();
+  </script>

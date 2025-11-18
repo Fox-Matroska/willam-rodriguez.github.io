@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Saira Stencil One</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Saira Stencil One -->
+  <link href="https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap" rel="stylesheet">
+
+  <!-- Shared styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page info-page">
+    <nav class="top-nav">
+      <a class="nav-button nav-language" href="crosswordpage.html">Language</a>
+      <a class="nav-button" href="newspage.html">>Some</a>
+      <a class="nav-button" href="watermarkpage.html">Choose</a>
+    </nav>
+
+    <!-- main content -->
+    <main class="info-main">
+      <h1 class="info-title">Saira Stencil One</h1>
+
+      <p class="info-paragraph">
+        This site’s concept centers on the idea of generics with minimalist designs, embodied by the
+        usage of the Saira Stencil One typeface. The primary focus is the usage and aesthetics of
+        Saira Stencil One in graphical and website contexts, where it often functions as a bold,
+        industrial display type that can also be used ornamentally or symbolically.
+      </p>
+
+      <p class="info-paragraph">
+        The three compositions explore different use cases of Saira Stencil One: a dense news layout,
+        a typographic crossword, and a watermarked surface. Together they highlight both the strengths
+        and limitations of the typeface in terms of legibility, accessibility, and overall user
+        experience when used in longer passages of text.
+      </p>
+    </main>
+
+    <!-- footer notes -->
+    <footer class="info-footer">
+      <span class="info-footnote">
+        Site design by William Rodriguez
+      </span>
+
+      <a
+        class="info-footnote"
+        href="https://www.omnibus-type.com/fonts/saira-stencil-one/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Link to the author of the typeface
+      </a>
+    </footer>
+  </div>
+
+<!--
+    Script for unique double-click behavior of one of the navigation buttons, which leads to a mysterious fourth page of the site.
+  -->
+
+<script>
+    (function () {
+      const langButton = document.querySelector('.nav-language');
+      if (!langButton) return;
+
+      const singleClickTarget = langButton.getAttribute('href') || 'watermarkpage.html';
+      const doubleClickTarget = 'about.html';
+
+      let clickTimer = null;
+      const delay = 250;
+
+      langButton.addEventListener('click', function (event) {
+        event.preventDefault();
+
+        if (clickTimer) {
+          // second click, treat as double-click
+          clearTimeout(clickTimer);
+          clickTimer = null;
+          window.location.href = doubleClickTarget;
+        } else {
+          // first click, wait to see if a second arrives
+          clickTimer = setTimeout(function () {
+            window.location.href = singleClickTarget;
+            clickTimer = null;
+          }, delay);
+        }
+      });
+    })();
+  </script>
